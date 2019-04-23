@@ -19,21 +19,20 @@ class dataImporter():
         self._index="qa_data"
 
         #可修改，但一般不需要，定义es服务器设置
-        self.es=ES([{"host":"local","port":9200}])
+        self.es=ES([{"host":"localhost","port":9200}])
 
         #可修改：定义文档类型
         self.doc_type="qa"
 
-	userName=input("Enter Name")
-	userPwd=input("Enter Pwd")
         #无需修改，链接mongodb
-        self.MGclient=MG(host,27017)
+        self.MGclient=MG("mongodb://reader:reader@localhost:27017")
 
         #可修改，指定数据库名称
         self.db=self.MGclient.spider_data
-	self.db.authenticate(userName,userPwd)
+
+        #self.db.authenticate("reader","reader")
         #可修改,指定collection的名称
-        self.collect=self.db.baiduqa_add1
+        self.collect=self.db.qa_byHand
 
     def create_mapping(self):
         '''用于创建映射'''
@@ -42,40 +41,41 @@ class dataImporter():
         data_mapping={
             "mappings":{
                 #指定文档类型 #注意！据说是官方已不再建议使用的一种特性
-                self.doc_type:{
-                    "properties":{
-                        "question":{
+                #self.doc_type:{
+                "properties":{
+                    "question":{
 
-                            #type indicates the type of this field
-                            #不能使用string，这是版本问题，text似乎表示可以索引的意思
-                            "type":"text",
+                        #type indicates the type of this field
+                        #不能使用string，这是版本问题，text似乎表示可以索引的意思
+                        "type":"text",
 
-                            #ik是一个需要另外安装的中文分词器
-                            "analyzer":"ik_max_word",
+                        #ik是一个需要另外安装的中文分词器
+                        "analyzer":"ik_max_word",
 
-                            #指定搜索时可用在可分词字段的分词器
-                            "search_analyzer":"ik_smart",
+                        #指定搜索时可用在可分词字段的分词器
+                        "search_analyzer":"ik_smart",
 
-                            #决定字段是否可以被用户搜索
-                            "index":True
+                        #决定字段是否可以被用户搜索
+                        "index":True
 
-                            },#注意此处的逗号！
+                        },#注意此处的逗号！
 
-                        "answer":{
+                    "answer":{
 
-                            #同上
-                            "type":"text",
+                        #同上
+                        "type":"text",
 
-                            "analyzer":"ik_max_word",
+                        "analyzer":"ik_max_word",
 
-                            "search_analyzer":"ik_smart",
+                        "search_analyzer":"ik_smart",
 
-                            "index":True
+                        "index":True
 
-                            },
-                        }
+                        },
                     }
-                }}
+                }
+                #}
+            }
 
         #如果不存在该名称的索引则进行下一步
         if not self.es.indices.exists(index=self._index):
@@ -94,9 +94,12 @@ class dataImporter():
         '''插入数据'''
 
         #bulk插入操作,关键在于bulk支持一个可迭代对象的插入
-        success,_=bulk(self.es,data_list,index=self._index,raise_on_error=True)
+        try:
+            success,_=bulk(self.es,data_list,index=self._index,raise_on_error=True)
+            print("execute insert {0} operation :{1}".format(success,_))      
 
-        print("execute insert {0} operation :{1}".format(success,_))
+        except Exception as e:
+            print(e)
 
 def main_exe():
     '''插入数据的主执行函数'''
@@ -116,7 +119,7 @@ def main_exe():
     data_list=[]
 
     #用于设置数据列表达到多少个的时候执行一次插入
-    list_max=200
+    list_max=1
 
     #构建遍历游标
     qaData=worker.collect.find()
@@ -130,7 +133,7 @@ def main_exe():
         #制造插入es的数据
         action={
             "_index":worker._index,
-            "_type":worker.doc_type,
+            #"_type":worker.doc_type,
             "_source":{
                 "question":item['title'],
                 "answer":item['answer']

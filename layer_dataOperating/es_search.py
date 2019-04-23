@@ -6,7 +6,7 @@ from elasticsearch import Elasticsearch as ES
 
 def searchInEs(des,tar_index,tar_docType,keyName,num_res):
 
-    esDriver=ES([{"host":"127.0.0.1","port":9200}])
+    esDriver=ES([{"host":"localhost","port":9200}])
 
     #构造请求结构
     query_body={
@@ -18,7 +18,9 @@ def searchInEs(des,tar_index,tar_docType,keyName,num_res):
         }
 
     #在es中搜索
-    result=esDriver.search(index=tar_index,doc_type=tar_docType,body=query_body,size=num_res)
+    #注意 doc_type已被强制锁定，这是为了适应es7.0没有doctype的设定 这是在deploy版本的代码里才具有的
+    #但是在函数参数中依然保留，为确保修改的地方最少
+    result=esDriver.search(index=tar_index,doc_type="_doc",body=query_body,size=num_res)
 
     return result["hits"]["hits"]
 
