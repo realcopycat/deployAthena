@@ -17,13 +17,13 @@ class dataImporter():
         self._index="news_case"
 
         #可修改，但一般不需要，定义es服务器设置
-        self.es=ES([{"host":"127.0.0.1","port":9200}])
+        self.es=ES([{"host":"localhost","port":9200}])
 
         #可修改：定义文档类型
         self.doc_type="case"
 
         #无需修改，链接mongodb
-        self.MGclient=MG()
+        self.MGclient=MG("mongodb://reader:reader@localhost:27017")
 
         #可修改，指定数据库名称
         self.db=self.MGclient.spider_data
@@ -38,7 +38,7 @@ class dataImporter():
         data_mapping={
             "mappings":{
                 #指定文档类型 #注意！据说是官方已不再建议使用的一种特性
-                self.doc_type:{
+                #self.doc_type:{
                     "properties":{
                         "title":{
 
@@ -170,7 +170,7 @@ class dataImporter():
                             },
                         }
                     }
-                }}
+                }
 
         #如果不存在该名称的索引则进行下一步
         if not self.es.indices.exists(index=self._index):
@@ -226,10 +226,32 @@ def main_exe():
 
         print(index)
 
+        checklist=[
+            'title',
+            'plainText',
+            'city',
+            'region',
+            'province',
+            'age',
+            'gender',
+            'job',
+            'month',
+            'duration',
+            'amont',
+            'method',
+            'type']
+
+        check=0
+        for each in item.keys():
+            if each in checklist:
+                check = check + 1
+        if check!=13:
+            continue
+                
         #制造插入es的数据
         action={
             "_index":worker._index,
-            "_type":worker.doc_type,
+            #"_type":worker.doc_type,
             "_source":{
                 "title":item['title'],
                 "plaintext":item['plainText'],
