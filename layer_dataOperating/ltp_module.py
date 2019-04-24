@@ -8,7 +8,7 @@ class ltpTools():
     def __init__(self):
 
         #initialize every ltp tool
-        LTP_DIR = "E:\code_Athena_Support"
+        LTP_DIR = "/home/demo1/support_ltp"
 
         #分词器
         self.segmentor = Segmentor()

@@ -6,7 +6,7 @@ class mongoSearch():
 
     def __init__(self):
 
-        self.client=MG()
+        self.client=MG("mongodb://reader:reader@localhost:27017")
 
     def singleFieldSearch(self,db_name,collect,key,value):
         '''
