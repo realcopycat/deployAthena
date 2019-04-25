@@ -23,7 +23,7 @@ class dataImporter():
         self.doc_type="line"
 
         #无需修改，链接mongodb
-        self.MGclient=MG()
+        self.MGclient=MG("mongodb://reader:reader@localhost:27017")
 
         #可修改，指定数据库名称
         self.db=self.MGclient.spider_data
@@ -38,54 +38,54 @@ class dataImporter():
         data_mapping={
             "mappings":{
                 #指定文档类型 #注意！据说是官方已不再建议使用的一种特性
-                self.doc_type:{
-                    "properties":{
-                        "LawTitle":{
+                #self.doc_type:{
+                "properties":{
+                    "LawTitle":{
 
-                            #type indicates the type of this field
-                            #不能使用string，这是版本问题，text似乎表示可以索引的意思
-                            "type":"text",
+                        #type indicates the type of this field
+                        #不能使用string，这是版本问题，text似乎表示可以索引的意思
+                        "type":"text",
 
-                            #ik是一个需要另外安装的中文分词器
-                            "analyzer":"ik_max_word",
+                        #ik是一个需要另外安装的中文分词器
+                        "analyzer":"ik_max_word",
 
-                            #指定搜索时可用在可分词字段的分词器
-                            "search_analyzer":"ik_smart",
+                        #指定搜索时可用在可分词字段的分词器
+                        "search_analyzer":"ik_smart",
 
-                            #决定字段是否可以被用户搜索
-                            "index":False
+                        #决定字段是否可以被用户搜索
+                        "index":False
 
-                            },#注意此处的逗号！
+                        },#注意此处的逗号！
 
-                        "lineNo":{
+                    "lineNo":{
 
-                            #同上
-                            "type":"text",
+                        #同上
+                        "type":"text",
 
-                            "analyzer":"ik_max_word",
+                        "analyzer":"ik_max_word",
 
-                            "search_analyzer":"ik_smart",
+                        "search_analyzer":"ik_smart",
 
-                            "index":False
+                        "index":False
 
-                            },
-                        
-                        "line":{
+                        },
+                    
+                    "line":{
 
-                            #同上
-                            "type":"text",
+                        #同上
+                        "type":"text",
 
-                            "analyzer":"ik_max_word",
+                        "analyzer":"ik_max_word",
 
-                            "search_analyzer":"ik_smart",
+                        "search_analyzer":"ik_smart",
 
-                            "index":True
+                        "index":True
 
-                            },
+                        },
 
-                        }
                     }
-                }}
+                }
+            }
 
         #如果不存在该名称的索引则进行下一步
         if not self.es.indices.exists(index=self._index):
@@ -144,7 +144,7 @@ def main_exe():
             #制造插入es的数据
             action={
                 "_index":worker._index,
-                "_type":worker.doc_type,
+                #"_type":worker.doc_type,
                 "_source":{
                     "LawTitle":item['name'],
                     "lineNo":line['lineNo'],

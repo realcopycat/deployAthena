@@ -13,7 +13,7 @@ class dataImporter():
     def __init__(self):
         '''初始化设置'''
 
-        #可修改：定义索引名称
+        #可修改：定c义索引名称
         self._index="news_case"
 
         #可修改，但一般不需要，定义es服务器设置
