@@ -4,10 +4,10 @@ from neo4j import GraphDatabase as GD
 from pymongo import MongoClient as MC
 
 #initialize the database driver
-driver=GD.driver("bolt://localhost:7687",auth=("neo4j","123"))
+driver=GD.driver("bolt://localhost:7687",auth=("neo4j","neo123"))
 
 #initialize the mongodb
-client=MC()
+client=MC('mongodb://reader:reader@localhost:27017')
 db=client.spider_data
 collect=db.lawTextTriple
 

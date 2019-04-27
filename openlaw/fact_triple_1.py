@@ -1,8 +1,13 @@
-﻿#fact triple extraction : first try
+﻿#coding=utf-8
+#fact triple extraction : first try
 
 # based on liuhuanyong's github project
 
-from athena_App.openlaw.fact_triple_1_relyModule import *
+import sys
+sys.path.append('/home/demo1/athena_App/openlaw')
+print(sys.path)
+
+from fact_triple_1_relyModule import *
 import re
 
 class TripleExtractor:
@@ -118,7 +123,7 @@ class TripleExtractor:
         return svos
 
 def test():
-    content='多的去了尽可能的全垒打你去浪费'
+    content='我不想离开你'
     extractor = TripleExtractor()
     svos = extractor.triples_main(content)
     print('svos', svos)

@@ -4,14 +4,14 @@ from neo4j import GraphDatabase as GD
 from pymongo import MongoClient as MC
 
 #initialize the database driver
-driver=GD.driver("bolt://localhost:7687",auth=("neo4j","123"))
+driver=GD.driver("bolt://localhost:7687",auth=("neo4j","neo123"))
 
 #initialize the mongodb`
-client=MC()
+client=MC('mongodb://reader:reader@localhost:27017')
 db=client.spider_data
 collect=db.baidu_baike_BIG
 
-#write in graph`
+#write in graph
 def addData(gr,node1,rela,node2):
 
     #cypher script
@@ -46,6 +46,9 @@ with driver.session() as session:
 
             if count%100==0:
                 print("loaded")
+            if count%1000==0:
+                print("已导入"+str(count)+"条")
+
 
 
 

@@ -7,7 +7,7 @@ class LtpParser:
     def __init__(self):
 
         #initialize every ltp tool
-        LTP_DIR = "E:\code_Athena_Support"
+        LTP_DIR = "/home/demo1/support_ltp"
 
         #分词器
         self.segmentor = Segmentor()
@@ -27,7 +27,7 @@ class LtpParser:
 
         #语义角色标注模块
         self.labeller = SementicRoleLabeller()
-        self.labeller.load(os.path.join(LTP_DIR, 'pisrl_win.model'))
+        self.labeller.load(os.path.join(LTP_DIR, 'pisrl.model'))
 
     '''语义角色标注'''
     def format_labelrole(self, words, postags):
