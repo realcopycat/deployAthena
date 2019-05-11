@@ -3,5 +3,5 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import Required
 
 class QuestionForm(Form):
-    question = StringField('你的疑问是...', validators=[Required()])
+    question = StringField('直接说出你的疑问吧~~', validators=[Required()])
     submit = SubmitField('搜索')

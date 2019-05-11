@@ -28,7 +28,7 @@ class ltpTools():
 
         #语义角色标注模块
         self.labeller = SementicRoleLabeller()
-        self.labeller.load(os.path.join(LTP_DIR, 'pisrl_win.model'))
+        self.labeller.load(os.path.join(LTP_DIR, 'pisrl.model'))
 
     def segANDpos(self,sen):
         '''
