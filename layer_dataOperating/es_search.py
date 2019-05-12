@@ -20,8 +20,9 @@ def searchInEs(des,tar_index,tar_docType,keyName,num_res):
     #在es中搜索
     #注意 doc_type已被强制锁定，这是为了适应es7.0没有doctype的设定 这是在deploy版本的代码里才具有的
     #但是在函数参数中依然保留，为确保修改的地方最少
+    print("{+} es搜索函数被调用\n {+} 原始结果如下:")
     result=esDriver.search(index=tar_index,doc_type="_doc",body=query_body,size=num_res)
-
+    print(result)
     return result["hits"]["hits"]
 
 

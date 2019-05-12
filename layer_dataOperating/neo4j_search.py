@@ -8,7 +8,7 @@ class neo4jQuery():
     def __init__(self):
 
         #initialize the database
-        self.driver=GD.driver("bolt://localhost:7687",auth=("neo4j","123"))
+        self.driver=GD.driver("bolt://localhost:7687",auth=("neo4j","neo123"))
 
         #start query session
         self.session=self.driver.session()

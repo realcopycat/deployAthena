@@ -23,12 +23,21 @@ class ltpTools():
         self.parser.load(os.path.join(LTP_DIR, "parser.model"))
 
         #命名实体识别
-        self.recognizer = NamedEntityRecognizer()
-        self.recognizer.load(os.path.join(LTP_DIR, "ner.model"))
+        #self.recognizer = NamedEntityRecognizer()
+        #self.recognizer.load(os.path.join(LTP_DIR, "ner.model"))
 
         #语义角色标注模块
         self.labeller = SementicRoleLabeller()
         self.labeller.load(os.path.join(LTP_DIR, 'pisrl.model'))
+        print('模型已全部加载')
+
+    def __del__(self):
+
+        self.segmentor.release()
+        self.labeller.release()
+        self.postagger.release()
+        self.postagger.release()
+        print('模型已全部释放')
 
     def segANDpos(self,sen):
         '''
@@ -112,5 +121,4 @@ class ltpTools():
         return words, postags, child_dict_list, roles_dict, format_parse_list
 
         
-preload=ltpTools()
 

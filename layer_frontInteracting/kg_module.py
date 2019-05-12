@@ -2,7 +2,7 @@
 
 from athena_App.layer_dataOperating.neo4j_search import neo4jQuery
 from athena_App.layer_dataOperating.es_search import searchInEs
-from athena_App.layer_dataOperating.ltp_module import ltpTools
+from athena_App.layer_dataOperating.ltp_module import *
 from athena_App.layer_dataOperating.mongo_search import mongoSearch
 from athena_App.layer_dataOperating.sy_module import senCompare
 import re
@@ -14,8 +14,8 @@ class knowledgeSearch():
     def __init__(self):
 
         self.index="baike_data_abstract"
-        self.type="knowledge"
-        self.key="abstract"
+        #self.type="knowledge"
+        self.key="plainText"
         self.num=10
 
         self.graphQuery=neo4jQuery()
@@ -25,17 +25,20 @@ class knowledgeSearch():
         self.collection='baidu_baike_3_test'
         self.collection2='baidu_baike_BIG'
 
-        self.ltpTool=ltpTools()
+        self.ltpTools=ltpTools()
 
         self.min_similarity_score=0.5
+        print('{+} 知识查询控制脚本完成了初始化！')
+    
 
     def es_presearch(self,des):
         '''
         根据描述进行预搜索
         '''
 
-        result=searchInEs(des,self.index,self.type,self.key,self.num)
-
+        result=searchInEs(des,self.index,"_doc",self.key,self.num)
+        print("{+} es搜索中...")
+        print(result)
         #取出title
         return [a['_source']['title'] for a in result]
 
@@ -44,7 +47,7 @@ class knowledgeSearch():
         接受es预选的实体数据
         返回可供es作图的打包数据
         '''
-
+        print('开始搜索neo4j')
         total_node=[]
         total_link=[]
         duplicateNodeCheck=set()
@@ -66,6 +69,8 @@ class knowledgeSearch():
         drawingData={}
         drawingData["data"]=total_node
         drawingData["links"]=total_link
+        print('图形数据：')
+        print(drawingData)
         return drawingData
 
     def getSpecifyData(self,title_list,des):
@@ -73,7 +78,7 @@ class knowledgeSearch():
         借助pyltp，同时利用es预选的答案，返回mongodb内相关的详细的百科文档数据
         '''
 
-        word_list,tag_list=self.ltpTool.segANDpos(des)
+        word_list,tag_list=self.ltpTools.segANDpos(des)
 
         #得到传入描述的核心词
         coreWord=[]
@@ -90,6 +95,7 @@ class knowledgeSearch():
             else:
                 singleResult=self.mongoSearch.singleFieldSearch(self.dbName,self.collection2,'title',title)
 
+            print("mongo搜索中...")
             singleDoc_specificInfo={}
             #为了应对没有relative_info的情况，使用try
             try:
@@ -137,8 +143,13 @@ class knowledgeSearch():
     '''
     def getTotalData_forKnowledgeSearch(self,des):
 
+        print("{ + } 传入的des如下：")
+        print(des)
+
         titleList=self.es_presearch(des)
         totalData={}
+        print('{+} print titleList:')
+        print(titleList)
 
         drawingData=self.getDrawingData(titleList)
         totalData["data"]=drawingData["data"]
