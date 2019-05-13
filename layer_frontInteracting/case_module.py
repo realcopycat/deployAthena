@@ -2,22 +2,25 @@
 
 from athena_App.layer_dataOperating.es_search import searchInEs
 from athena_App.layer_dataOperating.neo4j_search import neo4jQuery
-from athena_App.layer_dataOperating.textParse_module import TripleExtractor
+#在views里直接实例化本工具
+#from athena_App.layer_dataOperating.textParse_module import TripleExtractor
 from athena_App.layer_dataOperating.sy_module import senCompare
 from athena_App.layer_dataOperating.mongo_search import mongoSearch
 import re
 
 class caseQuery():
 
-    def __init__(self,des):
+    def __init__(self, des, tripletool):
         '''初始化模块'''
 
         self.graphQuery=neo4jQuery()
-        self.parser=TripleExtractor()
+        #self.ltpTools=Ltptool
+        print('{ + } 案例分析加载模型')
+        self.parser=tripletool
 
         self.index='case_data'
         self.docType='caseText'
-        self.key='abstract'
+        self.key='plainText'
         self.res_limit=10
         self.des=des
         self.searchMongo=mongoSearch()

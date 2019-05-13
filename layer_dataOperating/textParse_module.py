@@ -1,11 +1,12 @@
 # based on liuhuanyong's github project
 
-from athena_App.layer_dataOperating.ltp_module import ltpTools
+#在views中直接加载，故不需要在此载入
+#from athena_App.layer_dataOperating.ltp_module import ltpTools
 import re
 
 class TripleExtractor:
-    def __init__(self):
-        self.parser = ltpTools()
+    def __init__(self, ltpTools):
+        self.parser = ltpTools
 
     '''文章分句处理, 切分长句，冒号，分号，感叹号等做切分标识'''
     def split_sents(self, content):

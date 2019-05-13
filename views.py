@@ -29,6 +29,14 @@ from athena_App.layer_frontInteracting.qa_module import answerFinder
 from athena_App.layer_frontInteracting.kg_module import knowledgeSearch
 from athena_App.layer_frontInteracting.case_module import caseQuery
 
+#以下语句为尝试ltp在views里直接加载
+from athena_App.layer_dataOperating.ltp_module import ltpTools as Ltptool
+from athena_App.layer_dataOperating.textParse_module import TripleExtractor as tripleExtract
+#实例化
+actualTool = Ltptool()
+tripleTool = tripleExtract(actualTool)
+print('{ + } 执行实例化！')
+
 
 @app.route('/QAsearch', methods=['POST','GET'])
 def QAsearch():
@@ -101,7 +109,7 @@ def graph_search():
 def knowledge_search():
 
     #initialize graph search object
-    searchKnowledge=knowledgeSearch()
+    searchKnowledge=knowledgeSearch(actualTool)
 
     des=request.args.get('description')
     json_data=searchKnowledge.getTotalData_forKnowledgeSearch(des)
@@ -121,7 +129,7 @@ def case_graph_search():
 
     caseDes=request.args.get('caseDes')
     #initialize graph search object
-    case_graph_result=caseQuery(caseDes)
+    case_graph_result=caseQuery(caseDes, tripleTool)
 
     pre_json_data=case_graph_result.getData()
     print(pre_json_data)

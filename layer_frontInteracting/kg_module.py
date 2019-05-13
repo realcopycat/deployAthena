@@ -2,16 +2,18 @@
 
 from athena_App.layer_dataOperating.neo4j_search import neo4jQuery
 from athena_App.layer_dataOperating.es_search import searchInEs
-from athena_App.layer_dataOperating.ltp_module import *
+#为了测试在views里直接预加载，解除此处的导入
+#from athena_App.layer_dataOperating.ltp_module import *
 from athena_App.layer_dataOperating.mongo_search import mongoSearch
 from athena_App.layer_dataOperating.sy_module import senCompare
 import re
 import operator
 #本包可以根据字典值在列表中对字典排序
 
+#为了在views里直接预加载，在实例化时接收对象
 class knowledgeSearch():
 
-    def __init__(self):
+    def __init__(self, Ltptool):
 
         self.index="baike_data_abstract"
         #self.type="knowledge"
@@ -25,7 +27,9 @@ class knowledgeSearch():
         self.collection='baidu_baike_3_test'
         self.collection2='baidu_baike_BIG'
 
-        self.ltpTools=ltpTools()
+        #此处self直接引用参数中的对象
+        self.ltpTools=Ltptool
+        print('{ + } 知识查询加载模型')
 
         self.min_similarity_score=0.5
         print('{+} 知识查询控制脚本完成了初始化！')
