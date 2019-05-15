@@ -8,6 +8,8 @@ from athena_App.layer_dataOperating.sy_module import senCompare
 from athena_App.layer_dataOperating.mongo_search import mongoSearch
 import re
 
+print('{ + } 案例模块预加载完成')
+
 class caseQuery():
 
     def __init__(self, des, tripletool):

@@ -24,10 +24,12 @@ import time
 #from athena_App.openlaw.graphOfcase_query_echart import *
 
 #reconstruct series
-
 from athena_App.layer_frontInteracting.qa_module import answerFinder
+print('{ + } view函数执行 问答模块')
 from athena_App.layer_frontInteracting.kg_module import knowledgeSearch
+print('{ + } view函数执行 知识模块')
 from athena_App.layer_frontInteracting.case_module import caseQuery
+print('{ + } view函数执行 案例模块')
 
 #以下语句为尝试ltp在views里直接加载
 from athena_App.layer_dataOperating.ltp_module import ltpTools as Ltptool
@@ -61,7 +63,7 @@ def instruction():
         'instruction.html',
         title='说明',
         year=datetime.now().year,
-        message='Instruction'
+        message='编写中...'
     )
 
 @app.route('/about')
@@ -69,9 +71,9 @@ def about():
     """Renders the about page."""
     return render_template(
         'about.html',
-        title='About',
+        title='关于我们',
         year=datetime.now().year,
-        message='Your application description page.'
+        message='中国人民公安大学信息技术与网络安全学院'
     )
 
 @app.route('/answer/<word>')

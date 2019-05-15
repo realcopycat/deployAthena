@@ -9,6 +9,7 @@ from athena_App.layer_dataOperating.sy_module import senCompare
 import re
 import operator
 #本包可以根据字典值在列表中对字典排序
+print('{ + } 知识查询模块预加载完成')
 
 #为了在views里直接预加载，在实例化时接收对象
 class knowledgeSearch():

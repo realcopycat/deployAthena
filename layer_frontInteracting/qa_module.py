@@ -6,6 +6,7 @@ from athena_App.layer_frontInteracting.qa_answer import QAanswer
 
 #为了抽取指定元素
 import heapq
+print('{ + } 问答模块预加载完成')
 
 class answerFinder():
 
