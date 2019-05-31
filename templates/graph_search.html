@@ -15,7 +15,11 @@
     </h1>
 </div>
 
-
+<style>
+input{
+    max-width: 500px;
+}
+</style>
 <div class="jumbotron">
     
     <center>
@@ -24,21 +28,214 @@
         </div>
         <form class="form-inline">
             <div class="input-group">
-                <input type="text" id="search" class="form-control input-lg" placeholder="请输入你要想要知道的知识...">
-
+                <input type="text" style="width: 334px;" id="search" class="form-control input-lg" placeholder="请输入你要想要知道的知识...">
             </div>
 
         </form>
-        <button class="btn btn-default" onclick="search_knowledge()">搜索</button>
+        <button class="btn btn-default" onclick="search_knowledge()" style="width: 76px">搜索</button>
     </center>
     
 </div>
+<div class="page-header">
+        <h1>
+    
+        </h1></div>
+<div class="container" id='help_info'>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="tabbable" id="tabs-558813">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#panel-944167" data-toggle="tab">模块介绍</a>
+                                </li>
+                                <li>
+                                    <a href="#panel-465534" data-toggle="tab">使用帮助</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="panel-944167">
+                                    <p style="
+                                    padding-top: 10px;
+                                    padding-left: 10px;
+                                    padding-right: 10px;
+                                    padding-bottom: 10px;
+                                ">
+                                        什么叫刷单，金融诈骗是什么？电信诈骗中有着各种令人头疼的术语；本地的电信公司与哪些部门开展合作？现实办案中各个公司，部门之间的关系错综复杂。本模块能为解决上述问题给予有效帮助，辅助您理清名词所涉及的复杂关系。
+                                    </p>
+                                
+                                </div>
+                                <div class="tab-pane" id="panel-465534">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <img style="
+                                            width: 520px;
+                                            padding-top: 20px;
+                                            padding-left: 10px;
+                                            padding-right: 10px;
+                                        " alt="140x140" src="/static/img/知识查询5.png" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <ul style="
+                                            padding-top: 20px;
+                                            padding-right: 30px;
+                                            padding-bottom: 20px;
+                                            border-left-width: 10px;
+                                            margin-left: 0px;
+                                        ">
+                                                <li style="padding-bottom: 10px;">
+                                                    1.请输入所要查询的知识点。
+                                                </li>
+                                                <li style="padding-bottom: 10px;">
+                                                    2.在“知识图谱查询结果”中您将获得一张相关案件的图谱，您可以选择图谱中不同的节点、调整节点显示的数量以及拖动节点进而选择您想要的信息。同时您还可以获取到一张清晰明了的树图来帮助您建立起知识框架。下面的“相关知识”知识点的具体信息供您阅读。
+                                                </li>
+                                                <li style="padding-bottom: 10px;">
+                                                    3.如果要进行下一次搜索，请再次点击导航栏的“知识查询”。
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="
+                    padding-top: 50px;
+                    padding-left: 40px;
+                ">
+                        <div class="accordion" id="accordion-799366">
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-799366" href="#accordion-element-39797">检索示例1</a>
+                                </div>
+                                <div id="accordion-element-39797" class="accordion-body in collapse">
+                                    <div class="accordion-inner">
+                                        <p><a onclick="example1()">电信诈骗的特征</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-799366" href="#accordion-element-254793">检索实例2</a>
+                                </div>
+                                <div id="accordion-element-254793" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p><a onclick="example2()">互联网诈骗的常见手段</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading">
+                                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-799366" href="#accordion-element-8">检索实例3</a>
+                                </div>
+                                <div id="accordion-element-8" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p><a onclick="example3()">中国电信总公司</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
+    <div class="container" id="specificInfo" style="padding-bottom: 50px;">
+            <div class="class-header">
+                <div class="center-block">
+                    <h3>
+                        相关知识
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="title1">
+                                    Collapsible Group Item #1
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body" id="content1">
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="title2">
+                                    Collapsible Group Item #2
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body" id="content2">
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" id="title3">
+                                    Collapsible Group Item #3
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="panel-body" id="content3">
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingFour">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" id="title4">
+                                    Collapsible Group Item #4
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                            <div class="panel-body" id="content4">
+        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingFive">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" id="title5">
+                                    Collapsible Group Item #3
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="panel-body" id="content5">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
 
 <div class="row" id="graphRow">
     <div class="panel panel-primary">
-        <div class="panel-heading">
+        <div class="panel-heading" style="
+        border-top-width: 20px;
+        padding-top: 2px;
+        padding-left: 10px;
+        margin-top: 0px;
+        padding-bottom: 2px;
+    ">
             <h3>知识图谱查询结果</h3>
         </div>
         <div class="panel-body">
@@ -56,103 +253,15 @@
     </div>
 </div>
 
-
-
-<div class="container" id="specificInfo">
-    <div class="class-header">
-        <div class="center-block">
-            <h3>
-                相关知识
-            </h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="title1">
-                            Collapsible Group Item #1
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body" id="content1">
-
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="title2">
-                            Collapsible Group Item #2
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body" id="content2">
-
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" id="title3">
-                            Collapsible Group Item #3
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body" id="content3">
-
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingFour">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" id="title4">
-                            Collapsible Group Item #4
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                    <div class="panel-body" id="content4">
-
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingFive">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" id="title5">
-                            Collapsible Group Item #3
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body" id="content5">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 <script type="text/javascript">
     $("#specificInfo").hide();
     $("#graphRow").hide();
-    //$(document).keypress(function (e) {
-    //    // press 'enter' ,then execute the function
-    //    if (e.which == 13) {
-    //        search();
-    //    }
-    //});
+    $(document).keypress(function (e) {
+        //press 'enter' ,then execute the function
+        if (e.which == 13) {
+            search_knowledge();
+        }
+    });
 
     window.onresize = function () {
         //resize the graph area
@@ -321,6 +430,22 @@
         ]
     };
 
+    function example1() {
+        document.getElementById('search').value="电信诈骗的特征";
+        search_knowledge();
+
+    };
+    function example2() {
+        document.getElementById('search').value="互联网诈骗的常见手段";
+        search_knowledge();
+
+    };
+    function example3() {
+        document.getElementById('search').value="中国电信总公司";
+        search_knowledge();
+
+    };
+
     //interact with back end
     function search_knowledge() {
 
@@ -328,6 +453,7 @@
             description: $("#search").val(),
 
         }, function (json) {
+            $("#help_info").hide();
             dynamicInfoCreate(json);
             console.log(json);
             option.series[0].nodes = json.data;

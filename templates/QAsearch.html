@@ -2,7 +2,11 @@
 
 {% block content %}
 
-
+<style>
+input{
+    max-width: 500px;
+}
+</style>
 
 <div class="jumbotron">
     <div class="row">
@@ -22,11 +26,118 @@
             </div>
             <div class="row">
                 <center>
-                    {{ form.submit(class="btn btn-lg btn-primary btn-block") }}
+                    {{ form.submit(class="btn btn-lg btn-primary btn-block",style="
+                    width: 102px;
+                ") }}
                 </center>
             </div>
         </form>
     </div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-10">
+					<div class="tabbable" id="tabs-558813">
+						<ul class="nav nav-tabs">
+							<li class="active">
+								<a href="#panel-944167" data-toggle="tab">模块介绍</a>
+							</li>
+							<li>
+								<a href="#panel-465534" data-toggle="tab">使用帮助</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="panel-944167">
+								<p style="
+                                padding-top: 10px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                padding-bottom: 10px;
+                            ">
+                                    面临电信诈骗，一头雾水怎么办？无需到处找寻答案，在此直接抛出您的疑问，让本系统来告诉您。该平台融合了工业级检索服务器ElasticSearch，在千万级别可靠数据中快速搜寻您想要的答案。基于自然语言处理技术的检索系统略去繁琐，留下精简。而这一切的实现，只在瞬间。
+                                </p>
+							</div>
+							<div class="tab-pane" id="panel-465534">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <img style="
+                                        width: 530px;
+                                        padding-top: 10px;
+                                        padding-left: 10px;
+                                        padding-right: 20px;
+                                    " alt="140x140" src="/static/img/智能问答2.png" />
+                                    </div>
+                                    <div style="
+                                    width: 215px;
+                                    padding-left: 0px;
+                                    border-left-width: 40px;
+                                    margin-left: 0px;
+                                " class="col-md-2">
+                                        <ul style="
+                                        padding-top: 20px;
+                                        padding-right: 20px;
+                                        padding-bottom: 20px;
+                                        margin-left: 20px;
+                                        width: 210px;
+                                    ">
+                                            <li style="padding-bottom: 10px;">
+                                                1.	概括您遭遇的事件并将其输入。
+                                            </li>
+                                            <li style="padding-bottom: 10px;">
+                                                2.	在“最佳答案”中您可以看到相应的解答。“相关新闻案例”则智能推荐了类似案件供您参考。
+                                            </li>
+                                            <li style="padding-bottom: 10px;">
+                                                3.	如果要进行下一次搜索，请再次点击导航栏的“智能问答”。
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2" style="
+                padding-top: 50px;
+                padding-left: 30px;
+            ">
+					<div class="accordion" id="accordion-799366">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-799366" href="#accordion-element-39797">问题示例1</a>
+							</div>
+							<div id="accordion-element-39797" class="accordion-body in collapse">
+								<div class="accordion-inner">
+									<p><a href='{{ url_for("answer",word="我在微信上被骗了三千块") }}'>我在微信上被骗了三千块怎么办？</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-799366" href="#accordion-element-254793">问题实例2</a>
+							</div>
+							<div id="accordion-element-254793" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<p><a href='{{ url_for("answer",word="遇到冒充公检法机关诈骗怎么办") }}'>遇到冒充公检法机关诈骗怎么办？</a></p>
+								</div>
+							</div>
+                        </div>
+                        <div class="accordion-group">
+							<div class="accordion-heading">
+								 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-799366" href="#accordion-element-8">问题实例3</a>
+							</div>
+							<div id="accordion-element-8" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<p><a href='{{ url_for("answer",word="如何避免银行卡被盗刷") }}'>银行卡被盗刷？</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 

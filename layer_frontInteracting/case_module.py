@@ -89,6 +89,26 @@ class caseQuery():
 
         return highestTitle,list(relative_relation)
 
+    def nodeSelector(self, nodeString):
+        '''
+            节点过滤装置,
+
+            1.基于节点文本 使用停用词字典
+        '''
+        lenOfNode = len(nodeString)
+        if lenOfNode >= 20:
+            return None
+        elif lenOfNode <= 1:
+            return None
+        elif lenOfNode >= 5:
+            return nodeString
+        else:
+            with open('/home/toolData/stopwords.txt') as f:
+                for line in f.readlines():
+                    if line == nodeString:
+                        return None
+                return nodeString
+
     def pickBestGraph(self):
         '''
             调用后输出画图数据
@@ -111,6 +131,12 @@ class caseQuery():
             #取出node标签数据
             tmpNode1=record["a"]._properties["text"]
             tmpNode2=record["c"]._properties["text"]
+
+            if self.nodeSelector(tmpNode1) == None:
+                continue
+            if self.nodeSelector(tmpNode2) == None:
+                continue
+                
             node_list.append(tmpNode1)
             node_list.append(tmpNode2)
             #抽出linkType数据

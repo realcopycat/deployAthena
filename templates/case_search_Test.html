@@ -15,7 +15,11 @@
     <h1></h1>
 </div>
 
-
+<style>
+input{
+    max-width: 500px;
+}
+</style>
 
 
 <div class="row">
@@ -24,17 +28,119 @@
         <h1>Case Search</h1>
 
         <form class="form-inline">
-            <div class="input-group">
-                <input type="text" id="search" class="form-control input-lg" placeholder="请简要描述您的经历...">
-
+            <div class="">
+                
+                <input type="text" id="search" class="form-control" placeholder="请简要描述您的经历...">
+               
             </div>
 
         </form>
-        <button class="btn btn-default" onclick="search_knowledge()">搜索</button>
+        <button class="btn btn-default" onclick="search_knowledge()" style="width: 76px;">搜索</button>
     </center>
 </div>
-
 <hr style="filter: alpha(opacity=100,finishopacity=0,style=3)" width="80%" color="#6f5499" size="3" />
+
+<div class="container" id='help_info'>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-10">
+					<div class="tabbable" id="tabs-558813">
+						<ul class="nav nav-tabs">
+							<li class="active">
+								<a href="#panel-944167" data-toggle="tab">模块介绍</a>
+							</li>
+							<li>
+								<a href="#panel-465534" data-toggle="tab">使用帮助</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="panel-944167">
+								<p style="
+                                padding-top: 10px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                padding-bottom: 10px;
+                            ">
+                                    观千剑而后识器。有关电信诈骗的奇门诡术，防不胜防。作为一名一线干警，没碰见过这种手段？别急，只需要将案情简要描述输入本系统，“类案检索”中，依托案例库中上千个即时更新的案例，您可以接触到各个类型的事件，尽可能地多了解到电信诈骗的种种手段，开拓思路，有备无患。
+                                </p>
+                            
+							</div>
+							<div class="tab-pane" id="panel-465534">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img style="
+                                        width: 400px;
+                                        padding-top: 20px;
+                                        padding-left: 10px;
+                                        padding-right: 10px;
+                                    " alt="140x140" src="/static/img/类案检索3.png" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul style="
+                                        padding-top: 20px;
+                                        padding-right: 30px;
+                                        padding-bottom: 20px;
+                                        border-left-width: 10px;
+                                        margin-left: 20px;
+                                    ">
+                                            <li style="padding-bottom: 10px;">
+                                                1.请写明电信诈骗所涉及的平台，或是手段。
+                                            </li>
+                                            <li style="padding-bottom: 10px;">
+                                                2.在“案例图谱查询结果”中您将获得一张相关案件的图谱，您可以选择图谱中不同的节点、调整节点显示的数量以及拖动节点进而选择您想要的信息。在下面的“节点分析”中您可以得到相关节点信息的统计，辅助您进行节点选择。
+                                            </li>
+                                            <li style="padding-bottom: 10px;">
+                                                3.如果要进行下一次搜索，请再次点击导航栏上的“类案检索”。
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2" style="
+                padding-top: 40px;
+                padding-left: 40px;
+            ">
+					<div class="accordion" id="accordion-799366">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-799366" href="#accordion-element-39797">检索示例1</a>
+							</div>
+							<div id="accordion-element-39797" class="accordion-body in collapse">
+								<div class="accordion-inner">
+									<p><a onclick="example1()">我在微信上被骗了三千块</a></p>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-799366" href="#accordion-element-254793">检索实例2</a>
+							</div>
+							<div id="accordion-element-254793" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<p><a onclick="example2()">受害人参与了非法集资</a></p>
+								</div>
+							</div>
+                        </div>
+                        <div class="accordion-group">
+							<div class="accordion-heading">
+								 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-799366" href="#accordion-element-8">检索实例3</a>
+							</div>
+							<div id="accordion-element-8" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<p><a onclick="example3()">嫌疑人冒充电信运营商来欺诈</a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="row">
     <div id="relaData">
@@ -296,6 +402,22 @@
         $("#relaData").show()
     };
 
+    function example1() {
+        document.getElementById('search').value="我在微信上被骗了三千元";
+        search_knowledge();
+
+    };
+    function example2() {
+        document.getElementById('search').value="受害人参与了非法集资";
+        search_knowledge();
+
+    };
+    function example3() {
+        document.getElementById('search').value="嫌疑人冒充电信运营商来欺诈";
+        search_knowledge();
+
+    };
+
     //interact with back end
     function search_knowledge() {
 
@@ -303,6 +425,8 @@
             caseDes: $("#search").val(),
 
         }, function (json) {
+
+            $("#help_info").hide()
 
             dynamicBuild(json)
 

@@ -73,7 +73,7 @@ def about():
         'about.html',
         title='关于我们',
         year=datetime.now().year,
-        message='中国人民公安大学信息技术与网络安全学院'
+        message='中国人民公安大学信息技术与网络安全学院\n '
     )
 
 @app.route('/answer/<word>')
