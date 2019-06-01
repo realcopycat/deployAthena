@@ -13,7 +13,7 @@ class neo4jQuery():
         #start query session
         self.session=self.driver.session()
 
-    def entityQuery(self,node1):
+    def entityQuery(self, node1):
         '''
         实体查询
         !! Parameter:
@@ -26,6 +26,20 @@ class neo4jQuery():
         #construct the query script
         result=self.session.run("MATCH (a:Node {name:'"+node1+"'})-[b]->(n)"
               "RETURN a,b,n")
+
+        return self.resultProcess(result)
+
+    def procedureQuery(self, des, ctrl_code):
+        '''
+        design for knife_module
+        '''
+        if ctrl_code == 100
+            result = self.session.run("MATCH (a:Object )-[b]-()")
+
+    def resultProcess(self, result):
+        '''
+        原来的entityQuery的处理部分
+        '''
 
         node_list=[{'name':node1,'category':'center'}]
         link_list=[]

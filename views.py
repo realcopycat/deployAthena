@@ -146,6 +146,6 @@ def knife():
         year = datetime.now().year
         )
 
-@app.route('/searchAll',methods=['get','post'])
-def searchAll():
-    pass
+#@app.route('/searchAll',methods=['get','post'])
+#def searchAll():
+#    pass

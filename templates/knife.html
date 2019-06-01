@@ -1,3 +1,116 @@
 ﻿{% extends "layout.html" %}
-
 {% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<h1>
+					公安智能即时指导<small>    一站式解决公安工作流程问题</small>
+				</h1>
+			</div>
+			<div class="row">
+				<div class="col-md-8">
+					<ul class="thumbnails">
+						<li class="col-md-4">
+							<div class="thumbnail">
+                                <!--<img alt="300x200" src="img/people.jpg" />-->
+                                <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+								<div class="caption">
+									<h3>
+										下一步怎么办...
+									</h3>
+									<p>
+										找到了线索却不知如何入手？拿到了数据不知如何处理？……交给我们，依托海量流程库，在茫茫路径中寻找真相！
+									</p>
+									<p>
+										<a class="btn btn-primary" href="#panel-457463">使用后向查询</a> 
+									</p>
+								</div>
+							</div>
+						</li>
+						<li class="col-md-4">
+							<div class="thumbnail">
+                                <!--<img alt="300x200" src="img/city.jpg" />-->
+                                <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span>
+								<div class="caption">
+									<h3>
+										怎么才能找到...
+									</h3>
+									<p>
+										百思不得其解为何师傅就能想到从另一角度分析？不知道从哪里获取关键线索?……请输入你想要的，我们为您找到最终的突破口！
+									</p>
+									<p>
+										<a class="btn btn-primary" href="#panel-201385">使用前导查询</a> 
+									</p>
+								</div>
+							</div>
+						</li>
+						<li class="col-md-4">
+							<div class="thumbnail">
+                                <!--<img alt="300x200" src="img/sports.jpg" />-->
+                                <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+								<div class="caption">
+									<h3>
+										这个事情是什么流程...
+									</h3>
+									<p>
+										事务过于繁杂不知如何处理？太多材料要看没时间学规范？……在搜索框内键入你想要找到的流程，扫清死角！
+									</p>
+									<p>
+										<a class="btn btn-primary" href="#panel-2">使用流程查询</a>
+									</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<div class="tabbable" id="tabs-380675">
+						<ul class="nav nav-tabs">
+							<li class="active">
+								<a href="#panel-457463" data-toggle="tab">后向查询</a>
+							</li>
+							<li>
+								<a href="#panel-201385" data-toggle="tab">前导查询</a>
+                            </li>
+                            <li >
+								<a href="#panel-2" data-toggle="tab">流程查询</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="panel-457463">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="func1">找到</label>
+                                        <input type="text" class="form-control" id="func1">
+                                        <label for="func1">之后怎么办？</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">询问</button>
+                                </form>
+							</div>
+							<div class="tab-pane" id="panel-201385">
+                                <div class="form-group">
+                                    <label for="func2">怎么找到</label>
+                                    <input type="text" class="form-control" id="func2">
+                                    <!--<label for="func2">之后怎么办？</label>-->
+                                </div>
+                                <button type="submit" class="btn btn-primary">询问</button>
+                            </div>
+                            <div class="tab-pane" id="panel-2">
+                                <div class="form-group">
+                                    <label for="func3">我要找到的流程是</label>
+                                    <input type="text" class="form-control" id="func3">
+                                    <!--<label for="func2">之后怎么办？</label>-->
+                                </div>
+                                <button type="submit" class="btn btn-primary">询问</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
