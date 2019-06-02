@@ -45,7 +45,12 @@ class knowledgeSearch():
         print("{+} es搜索中...")
         print(result)
         #取出title
-        return [a['_source']['title'] for a in result]
+
+        #special adjustment:
+        resultTitle = [a['_source']['title'] for a in result]
+        resultTitle.remove("骗子")
+
+        return resultTitle
 
     def getDrawingData(self,title_list):
         '''

@@ -30,7 +30,8 @@ from athena_App.layer_frontInteracting.kg_module import knowledgeSearch
 print('{ + } view函数执行 知识模块')
 from athena_App.layer_frontInteracting.case_module import caseQuery
 print('{ + } view函数执行 案例模块')
-
+from athena_App.layer_frontInteracting.knife_module import knifeModule
+print('{ + } view函数执行 助手模块')
 #以下语句为尝试ltp在views里直接加载
 from athena_App.layer_dataOperating.ltp_module import ltpTools as Ltptool
 from athena_App.layer_dataOperating.textParse_module import TripleExtractor as tripleExtract
@@ -146,6 +147,10 @@ def knife():
         year = datetime.now().year
         )
 
-#@app.route('/searchAll',methods=['get','post'])
-#def searchAll():
-#    pass
+@app.route('/procedureSearch',methods=['get','post'])
+def procedureSearch():
+    Des = request.args.get("des")
+    ctrlCode = request.args.get("code")
+    procedureKnife = knifeModule(Des, ctrlCode, actualTool)
+
+    return jsonify(procedureKnife.taskDistribute())

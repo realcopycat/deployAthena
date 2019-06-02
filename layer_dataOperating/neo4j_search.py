@@ -1,6 +1,7 @@
 # 此函数为在图数据库中搜索的函数，由于各个模块需求各异，这个模块设计为 类 的形式
 
 from neo4j import GraphDatabase as GD
+from py2neo import Graph
 
 class neo4jQuery():
     #query in case graph
@@ -12,6 +13,10 @@ class neo4jQuery():
 
         #start query session
         self.session=self.driver.session()
+
+        #initialize py2neo
+        #import this tool to process complex path
+        self.graph = Graph(password = 'neo123')
 
     def entityQuery(self, node1):
         '''
@@ -27,16 +32,23 @@ class neo4jQuery():
         result=self.session.run("MATCH (a:Node {name:'"+node1+"'})-[b]->(n)"
               "RETURN a,b,n")
 
-        return self.resultProcess(result)
+        return self.resultProcess(result, node1)
 
     def procedureQuery(self, des, ctrl_code):
         '''
         design for knife_module
         '''
-        if ctrl_code == 100
-            result = self.session.run("MATCH (a:Object )-[b]-()")
+        if ctrl_code == 100:
+            result = self.graph.run("MATCH p=(a:Object {name:'" + des + "'})-[*1..4]->(b) return p")
+        elif ctrl_code == 200:
+            result = self.graph.run("MATCH p=(b)-[*1..4]->(a:Object {name:'" + des + "'}) return p")
+        else:
+            result = self.graph.run("match (a)-[c]->(b) where (a:Func or a:Judge or a:Object) and ANY (x in a.belong where x =~ '.*"+ des +"') return a,b")
 
-    def resultProcess(self, result):
+        #对于结果的处理，封装到主控函数中
+        return result
+
+    def resultProcess(self, result, node1):
         '''
         原来的entityQuery的处理部分
         '''

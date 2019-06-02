@@ -4,7 +4,7 @@ import csv
 #from pymongo import MongoClient as MC
 from neo4j import GraphDatabase as GD
 
-path = ""
+path = "/home/procedureData/import2.csv"
 
 csv_file = open(path, 'r', encoding='UTF-8')
 csvReader = csv.reader(csv_file)
@@ -13,7 +13,7 @@ csvReader = csv.reader(csv_file)
 # db = client.spider_data
 # collection = db.procedure
 
-# count = 0
+count = 0
 reslist = list()
 for eachline in csvReader:
     count = count + 1
