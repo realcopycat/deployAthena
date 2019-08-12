@@ -1,0 +1,151 @@
+{% extends "layout2.html" %}
+
+{% block css_sheet %}
+
+<link rel="stylesheet" href="/static/asset/mainpage.css">
+<link rel="stylesheet" href="/static/asset/Navigation-Clean.css">
+<link rel="stylesheet" href="/static/asset/styles.css">
+<script src="/static/scripts/jquery-2.2.4.min.js"></script>
+<script src="/static/js/echarts.min.js"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<div>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><h3 class="navbar-brand" href="#">实时案件监控</h3><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <!-- 有待填入消息 -->
+                        <li class="nav-item" role="presentation">未审核：</li>
+                        <li class="nav-item" role="presentation">已审核：</li>
+                        <li class="nav-item" role="presentation">侦办中：</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">仿冒身份欺诈</h5>
+                </div>
+                <div class="card-body">
+                    <div id="draw1" style="height: 200px;width: 100%"></div>
+                    <a class="card-link" href="#">查看详情</a></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">购物类欺诈</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><a class="card-link" href="#">查看详情</a></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">活动类欺诈</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><a class="card-link" href="#">查看详情</a></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">利诱类欺诈</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><a class="card-link" href="#">查看详情</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">虚构险情欺诈</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><a class="card-link" href="#">查看详情</a></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">日常消费类欺诈</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><a class="card-link" href="#">查看详情</a></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">钓鱼、木马类欺诈</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><a class="card-link" href="#">查看详情</a></div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">其他新型欺诈</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p><a class="card-link" href="#">查看详情</a></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('draw1'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        xAxis: {
+            type: 'category',
+            show: true,
+            boundaryGap: false,
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            show: false,
+            type: 'value'
+        },
+        series: [{
+           
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            areaStyle: {}
+        }]
+    };
+
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+    var targetDiv = document.getElementById("draw1");
+    function outputsize() {
+        console.log("change!");
+        targetDiv.removeAttribute('_echarts_instance_');
+        var myChart = echarts.init(document.getElementById('draw1'));
+        myChart.setOption(option, true);
+    }
+    observer = new ResizeObserver(outputsize).observe(targetDiv);
+
+
+</script>
+
+{% endblock %}

@@ -95,7 +95,6 @@
 									<ul class="dropdown-menu">
 									  <li><a href="#" onclick="func1example1()">可疑账号</a></li>
 									  <li><a href="#" onclick="func1example2()">可疑犯罪信息</a></li>
-									  <li><a href="#" onclick="func1example3()">涉案银行卡</a></li>
 									</ul>
 								</div>
 							</div>
@@ -133,7 +132,7 @@
 									  想尝试一些例子？ <span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu">
-									  <li><a href="#" onclick="func3example1()">账户查询信息关联法</a></li>
+									  <li><a href="#" onclick="func3example1()">账目查询信息关联法</a></li>
 									  <li><a href="#" onclick="func3example2()">从取款人入手侦查</a></li>
 									</ul>
 								</div>
@@ -190,7 +189,7 @@
 <script type="text/javascript">
 	$("#answerPart").hide()
 	option = {
-		backgroundColor: '#F5F0B6',
+		backgroundColor: '#F0DFAF',
 		legend: {
 			data: [
 				{
@@ -217,11 +216,14 @@
 				type: 'graph',
 				layout: 'force',
 				focusNodeAdjacency: true,
-                symbolSize: 50,
+				symbolSize: 40,
+				symbol: "roundRect",
                 force: {
-                    repulsion: 100,
-                    edgeLength: [50, 200]
-                },
+					repulsion: 300,
+					gravity: 0.1,
+					edgeLength: 50,
+					layoutAnimation: true,
+				},
 				roam: true,
 				draggable: true,
 				categories: [
@@ -229,7 +231,7 @@
 						name: ":Object",
 						itemStyle: {
 							normal: {
-								color: '#4D728D'
+								color: '#395574'
 							},
 						},
 					},
@@ -237,7 +239,7 @@
 						name: ":Func",
 						itemStyle: {
 							normal: {
-								color: '#374757'
+								color: '#9CA47E'
 							},
 						},
 					},
@@ -245,24 +247,26 @@
 						name: ":Judge",
 						itemStyle: {
 							normal: {
-								color: '#A58A6D'
+								color: '#F09240'
 							},
 						},
 					},
 				],
 				label: {
 					normal: {
+						position: "inside",
 						show: true,
 						color: '#000000',
 					},
 					emphasis: {
+						position: "top",
 						show: true,
 						color: '#000000',
 						fontSize: 15
 					}
 				},
 				edgeSymbol: ['circle', 'arrow'],
-                edgeSymbolSize: [4, 10],
+                edgeSymbolSize: [0, 15],
 				lineStyle: {
                     normal: {
 						color: 'source',
@@ -272,7 +276,7 @@
                     },
                     emphasis: {
                         opacity: 1,
-                        width: 5,
+                        width: 10,
                         curveness: 0.2
                     },
                 },
@@ -284,7 +288,9 @@
                         shadowColor: 'rgba(0, 0, 0, 0.3)'
                     },
                     emphasis: {
-                        color: "#FFA465"
+						color: "#F2542D",
+						symbolSize: 20,
+						symbol: "roundRect"
                     }
                 },
 			},
@@ -381,7 +387,7 @@
 		Search("涉案银行卡", 200)
 	};
 	function func3example1() {
-		Search("账户查询信息关联法", 300)
+		Search("账目查询信息关联法", 300)
 	};
 	function func3example2() {
 		Search("从取款人入手侦查", 300)

@@ -24,21 +24,21 @@ import time
 #from athena_App.openlaw.graphOfcase_query_echart import *
 
 #reconstruct series
-from athena_App.layer_frontInteracting.qa_module import answerFinder
+#from athena_App.layer_frontInteracting.qa_module import answerFinder
 print('{ + } view函数执行 问答模块')
-from athena_App.layer_frontInteracting.kg_module import knowledgeSearch
+#from athena_App.layer_frontInteracting.kg_module import knowledgeSearch
 print('{ + } view函数执行 知识模块')
-from athena_App.layer_frontInteracting.case_module import caseQuery
+#from athena_App.layer_frontInteracting.case_module import caseQuery
 print('{ + } view函数执行 案例模块')
-from athena_App.layer_frontInteracting.knife_module import knifeModule
+#from athena_App.layer_frontInteracting.knife_module import knifeModule
 print('{ + } view函数执行 助手模块')
 #以下语句为尝试ltp在views里直接加载
-from athena_App.layer_dataOperating.ltp_module import ltpTools as Ltptool
-from athena_App.layer_dataOperating.textParse_module import TripleExtractor as tripleExtract
+#from athena_App.layer_dataOperating.ltp_module import ltpTools as Ltptool
+#from athena_App.layer_dataOperating.textParse_module import TripleExtractor as tripleExtract
 #实例化
-actualTool = Ltptool()
-tripleTool = tripleExtract(actualTool)
-print('{ + } 执行实例化！')
+#actualTool = Ltptool()
+#tripleTool = tripleExtract(actualTool)
+#print('{ + } 执行实例化！')
 
 
 @app.route('/QAsearch', methods=['POST','GET'])
@@ -154,3 +154,17 @@ def procedureSearch():
     procedureKnife = knifeModule(Des, ctrlCode, actualTool)
 
     return jsonify(procedureKnife.taskDistribute())
+
+@app.route('/tools',methods=['get','post'])
+def tools():
+    return render_template(
+        'login.html'
+    )
+
+@app.route('/toolcenter',methods=['get','post'])
+def toolcenter():
+    return render_template(
+        'tool_welcome.html'
+    )
+
+#@app.route('')

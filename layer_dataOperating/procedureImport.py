@@ -4,7 +4,7 @@ import csv
 #from pymongo import MongoClient as MC
 from neo4j import GraphDatabase as GD
 
-path = "/home/procedureData/import2.csv"
+path = "/home/procedureData/import910.csv"
 
 csv_file = open(path, 'r', encoding='UTF-8')
 csvReader = csv.reader(csv_file)
@@ -57,7 +57,7 @@ with driver.session() as session:
                     print(type(title))
                     if title not in exist_title:
                         exist_title.append(title)
-                        session.run('MATCH (a: '+nodetag1+' {name: $name1}) SET a.belong='+exist_title+'}',
+                        session.run('MATCH (a: '+nodetag1+' {name: $name1}) with a.belong + ["' + title + '"] as res MATCH (a: '+nodetag1+' {name: $name1}) set a.belong = res',
                                 name1 = nodename1)
                 except KeyError as e:
                     session.run('MATCH (a: '+nodetag1+' {name: $name1}) SET a += {belong:["'+title+'"]}',
@@ -65,8 +65,8 @@ with driver.session() as session:
                 try:
                     exist_title=record['b']._properties['belong']
                     if title not in exist_title:
-                        exist_title.append(title)
-                        session.run('MATCH (a: '+nodetag2+' {name: $name2}) SET a.belong='+exist_title+'}',
+                        #exist_title.append(title)
+                        session.run('MATCH (a: '+nodetag2+' {name: $name2}) with a.belong + ["' + title + '"] as res MATCH (a: '+nodetag2+' {name: $name2}) set a.belong = res',
                                 name2 = nodename2)
                 except KeyError as e:
                     session.run('MATCH (a: '+nodetag2+' {name: $name2}) SET a += {belong:["'+title+'"]}',

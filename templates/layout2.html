@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ title }} - Q&A system</title>
+    <!-- css sheet below is from the template of bootstrap4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/content/dashboard.css">
+    {% block css_sheet %}{% endblock %}   
+    <style>
+      .icon{
+        width: 32px;
+        height: 32px;
+      }
+      .icon2{
+        width: 32px;
+        height: 32px;
+        margin-right: 3px;
+      }
+      .navbar{
+        background-color: #032059
+      }
+      .sidebar .nav-link {
+        background-color: #2A6BBF;
+        color:azure
+      }
+      .sidebar-heading{
+        background-color: #497AA6
+      }
+      span{
+        color:azure;
+      }
+      body {
+        background-color: #122140
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow">
+      <img style="margin-left: 10px;margin-right: 10px" src="/static/img/policeicon.png" height="20" width="20">
+      <a style="padding-left: 15px; margin-right: 0;padding-right: 15px" class="navbar-brand col-xs-3" href="#">电诈案件侦查平台</a>
+      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#">退出</a>
+        </li>
+      </ul>
+    </nav>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block sidebar">
+          <div class="sidebar-sticky">
+            <div class="center sidebar-heading d-flex justify-content-between align-items-center px-3 text-muted">
+              <span style="
+              padding-top: 0.6rem;
+              padding-bottom: 0.6rem;
+              
+              font-size: .75rem;
+              ">侦查工具
+              </span>
+                
+            </div>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                <img src="/static/svg/home.svg" alt="home" class="icon">
+                  实时监控中心 <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                <img src="/static/svg/dollar.svg" alt="dollar" class="icon">
+                  资金流分析
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <img src="/static/svg/microphone.svg" alt="microphone" class="icon">
+                  信息流分析
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                <img src="/static/svg/link-intact.svg" alt="link-intact" class="icon">
+                  串并案分析
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <img src="/static/svg/hard-drive.svg" alt="hard-drive" class="icon">
+                  案件信息中心
+                </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <img src="/static/svg/compass.svg" alt="compass" class="icon">
+                    位置追踪
+                  </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <img src="/static/svg/info.svg" alt="info" class="icon">
+                  转入查询平台
+                </a>
+              </li>
+            </ul>
+    
+            <div class="center sidebar-heading d-flex justify-content-between align-items-center px-3 text-muted">
+              <span style="
+              padding-top: 0.6rem;
+              padding-bottom: 0.6rem;
+              
+              font-size: .75rem;
+              ">管理工具
+              </span>
+              
+            </div>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <img src="/static/svg/bug.svg" alt="bug" class="icon2">                  
+                  内部审计
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <img src="/static/svg/people.svg" alt="people" class="icon2"> 
+                 用户管理
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <img src="/static/svg/terminal.svg" alt="terminal" class="icon2">
+                  数据库操作
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <img src="/static/svg/graph.svg" alt="graph" class="icon2">
+                  统计
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    <!--main-->
+        
+      </div>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <!-- content here! -->
+        
+        {% block content %}{% endblock %}
+      </main>
+      </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, Bootstrap, then CoreUI  -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>
